@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionário Psicossocial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Avaliação Psicossocial</h1>
+    <p class="subtitle">Responda às perguntas abaixo de forma sincera.</p>
+
+    <form method="POST">
+        <div class="cards-container">
+            {% for id, texto, invertida, dimensao in perguntas %}
+            <div class="pergunta-card">
+                <p class="pergunta-texto"><strong>{{ loop.index }})</strong> {{ texto }}</p>
+
+                {% if invertida %}
+                    {% set escala = [(0,'Sempre'),(1,'Frequentemente'),(2,'Às vezes'),(3,'Raramente'),(4,'Nunca')] %}
+                {% else %}
+                    {% set escala = [(4,'Sempre'),(3,'Frequentemente'),(2,'Às vezes'),(1,'Raramente'),(0,'Nunca')] %}
+                {% endif %}
+
+                <div class="opcoes">
+                    {% for valor, label in escala %}
+                    <label class="opcao">
+                        <input type="radio" name="pergunta_{{ id }}" value="{{ valor }}" required>
+                        {{ label }}
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar</button>
+    </form>
+</div>
+</body>
+</html>

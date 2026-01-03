@@ -1,0 +1,22 @@
+.opcao {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.opcao input[type="radio"] {
+    margin-right: 8px; /* deixa o círculo visível */
+}
+
+.opcao:hover {
+    background-color: #eef;
+}
+
+.opcao input[type="radio"]:checked + label {
+    background-color: #4a90e2;
+    color: #fff;
+}

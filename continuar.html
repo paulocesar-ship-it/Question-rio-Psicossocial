@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Continuar?</title>
+</head>
+<body>
+
+<h2>Respostas registradas com sucesso</h2>
+
+<p><strong>Empresa:</strong> {{ empresa }}</p>
+<p><strong>Total de participantes até agora:</strong> {{ total }}</p>
+
+<form action="/novo" method="get">
+    <button type="submit">Adicionar novo participante</button>
+</form>
+
+<br>
+
+<form action="/finalizar" method="get">
+    <button type="submit">Finalizar questionário</button>
+</form>
+
+</body>
+</html>
