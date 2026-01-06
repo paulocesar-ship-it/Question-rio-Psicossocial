@@ -6,36 +6,40 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div class="container">
-    <h1>Avaliação Psicossocial</h1>
-    <p class="subtitle">Responda às perguntas abaixo de forma sincera.</p>
 
-    <form method="POST">
-        <div class="cards-container">
-            {% for id, texto, invertida, dimensao in perguntas %}
-            <div class="pergunta-card">
-                <p class="pergunta-texto"><strong>{{ loop.index }})</strong> {{ texto }}</p>
+<form method="POST">
+    <div class="cards-container">
 
-                {% if invertida %}
-                    {% set escala = [(0,'Sempre'),(1,'Frequentemente'),(2,'Às vezes'),(3,'Raramente'),(4,'Nunca')] %}
-                {% else %}
-                    {% set escala = [(4,'Sempre'),(3,'Frequentemente'),(2,'Às vezes'),(1,'Raramente'),(0,'Nunca')] %}
-                {% endif %}
+        {% for id, texto, escala_key, invertida in perguntas %}
+        <div class="pergunta-card">
 
-                <div class="opcoes">
-                    {% for valor, label in escala %}
+            <p class="pergunta-texto">
+                <strong>{{ loop.index }})</strong> {{ texto }}
+            </p>
+
+            <div class="opcoes">
+                {% set opcoes = ESCALAS[escala_key] %}
+
+                {% for i in range(opcoes|length) %}
                     <label class="opcao">
-                        <input type="radio" name="pergunta_{{ id }}" value="{{ valor }}" required>
-                        {{ label }}
+                        <input
+                            type="radio"
+                            name="pergunta_{{ id }}"
+                            value="{{ i }}"
+                            required
+                        >
+                        {{ opcoes[i] }}
                     </label>
-                    {% endfor %}
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
 
-        <button type="submit" class="btn-submit">Enviar</button>
-    </form>
-</div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <button type="submit" class="btn-enviar">Enviar</button>
+</form>
+
 </body>
 </html>

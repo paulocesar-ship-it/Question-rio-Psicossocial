@@ -3,54 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <title>Questionário Finalizado</title>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
+            box-sizing: border-box;
         }
 
-        .card {
-            background: white;
-            padding: 40px;
-            max-width: 500px;
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #00c853, #00bfa5);
+            color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 80px 60px 100px; /* segurança TOP e BOTTOM */
             text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .icone {
+            font-size: 96px;
+            margin-bottom: 32px;
+            line-height: 1;
         }
 
         h1 {
-            color: #2e7d32;
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 28px;
         }
 
         p {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #333;
+            font-size: 26px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            opacity: 0.95;
+        }
+
+        .destaque {
+            font-weight: 600;
+        }
+
+        .rodape {
+            margin-top: 48px;
+            font-size: 18px;
+            opacity: 0.85;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 24px 80px;
+            }
+
+            .icone {
+                font-size: 72px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            p {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>✔ Questionário finalizado</h1>
+<div class="container">
 
-    <p>
-        Muito obrigado pela sua participação.
+    <div class="icone">✔</div>
+
+    <h1>Questionário finalizado com sucesso</h1>
+
+    <p class="destaque">
+        Agradecemos sinceramente pela sua participação.
     </p>
 
     <p>
-        As informações foram registradas com sucesso.
-        Os documentos técnicos já foram gerados e
-        serão avaliados o mais breve possível pela equipe responsável.
+        As respostas foram registradas de forma segura e anônima.
+        Os dados já foram processados e os relatórios técnicos
+        correspondentes foram gerados automaticamente.
     </p>
 
     <p>
-        Você pode encerrar esta página com segurança.
+        Os resultados serão analisados pela equipe responsável,
+        respeitando todos os critérios técnicos e éticos do processo.
     </p>
+
+    <div class="rodape">
+        Você pode encerrar esta página com tranquilidade.
+    </div>
+
 </div>
 
 </body>

@@ -1,25 +1,24 @@
 <form method="POST">
     <div class="cards-container">
-        {% for id, texto, invertida, dimensao in perguntas %}
-        <div class="pergunta-card">
-            <p><strong>{{ loop.index }})</strong> {{ texto }}</p>
 
-            {% if invertida %}
-                {% set escala = [(0,'Sempre'),(1,'Frequentemente'),(2,'Às vezes'),(3,'Raramente'),(4,'Nunca')] %}
-            {% else %}
-                {% set escala = [(4,'Sempre'),(3,'Frequentemente'),(2,'Às vezes'),(1,'Raramente'),(0,'Nunca')] %}
-            {% endif %}
+        {% for p in perguntas %}
+        <div class="pergunta-card">
+            <p><strong>{{ loop.index }})</strong> {{ p.texto }}</p>
 
             <div class="opcoes">
-                {% for valor, label in escala %}
+                {% for opcao in p.escala %}
                 <label class="opcao">
-                    <input type="radio" name="pergunta_{{ id }}" value="{{ valor }}" required>
-                    {{ label }}
+                    <input type="radio"
+                           name="pergunta_{{ p.id }}"
+                           value="{{ opcao.valor }}"
+                           required>
+                    {{ opcao.label }}
                 </label>
                 {% endfor %}
             </div>
         </div>
         {% endfor %}
+
     </div>
 
     <button type="submit">Enviar</button>
